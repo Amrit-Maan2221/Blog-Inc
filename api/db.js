@@ -1,6 +1,6 @@
 import mysql from 'mysql';
 
-export const connection = mysql.createConnection({
+export const db = mysql.createConnection({
     host: 'remotemysql.com',
     user: 'pNBaHFAM2K',
     password: 'zowhxkvpWW',
