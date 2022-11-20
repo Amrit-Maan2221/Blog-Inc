@@ -7,7 +7,7 @@ body{
   display: flex;
   justify-content: center;
   .container {
-    width: 1024px;
+    width: 80%;
 
     .link {
       text-decoration: none;
@@ -170,6 +170,7 @@ body{
                 display: grid;
                 place-content: center;
                 height: 100%;
+                width: 60%;
             }
 
             &::after {

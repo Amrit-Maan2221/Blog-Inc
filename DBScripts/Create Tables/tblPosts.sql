@@ -5,6 +5,7 @@ CREATE TABLE `pNBaHFAM2K`.`posts` (
   `img` VARCHAR(255) NULL,
   `date` DATETIME NOT NULL,
   `uid` INT NOT NULL,
+    `cat` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   INDEX `uid_idx` (`uid` ASC) VISIBLE,
   CONSTRAINT `uid`
