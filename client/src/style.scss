@@ -162,6 +162,12 @@ $lightGreen: #b9e7e7;
           .img {
             flex: 2;
             position: relative;
+            
+            h2{
+                display: grid;
+                place-content: center;
+                height: 100%;
+            }
 
             &::after {
               content: "";
