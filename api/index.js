@@ -3,6 +3,7 @@ const authRoutes = require("./routes/auth.js");
 const userRoutes = require("./routes/users.js");
 const postRoutes = require("./routes/posts.js");
 const cookieParser = require("cookie-parser");
+var cors = require('cors');
 const { db, 
  //   handleDisconnect
  } = require("./db.js");
@@ -12,8 +13,10 @@ const multer = require("multer");
 const app = express();
 const port = 3001;
 
+
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import axios from "axios";
+import {axoisInstance} from "../util/constants.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { modules, formats } from "../util/EditorSettings"
@@ -21,7 +21,7 @@ const Write = () => {
             try {
                 const formData = new FormData();
                 formData.append("file", file);
-                const res = await axios.post("/upload", formData);
+                const res = await axoisInstance.post("/upload", formData);
                 return res.data;
             } catch (err) {
                 console.log(err);
@@ -35,13 +35,13 @@ const Write = () => {
 
         try {
             state
-                ? await axios.put(`/posts/${state.id}`, {
+                ? await axoisInstance.put(`/posts/${state.id}`, {
                     title,
                     desc: value,
                     cat,
                     img: file ? imgUrl : "",
                 })
-                : await axios.post(`/posts/`, {
+                : await axoisInstance.post(`/posts/`, {
                     title,
                     desc: value,
                     cat,
