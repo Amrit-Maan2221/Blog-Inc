@@ -1,25 +1,24 @@
-import express from "express";
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/posts.js";
-import cookieParser from "cookie-parser";
-import { db, 
+const express = require("express");
+const authRoutes = require("./routes/auth.js");
+const userRoutes = require("./routes/users.js");
+const postRoutes = require("./routes/posts.js");
+const cookieParser = require("cookie-parser");
+var cors = require('cors');
+const { db, 
  //   handleDisconnect
- } from "./db.js";
-import multer from "multer";
+ } = require("./db.js");
+const multer = require("multer");
+
+
 const app = express();
 const port = 3001;
 
+
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
 
-app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
-})
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -46,3 +45,11 @@ app.use("/api/posts", postRoutes);
 
 //handleDisconnect(db);
    
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port http://localhost:${port}`);
+})

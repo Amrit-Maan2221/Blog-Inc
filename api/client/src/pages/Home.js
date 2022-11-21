@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import {axoisInstance} from "../util/constants.js";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${cat}`);
+        const res = await axoisInstance.get(`/posts${cat}`);
         setPosts(res.data);
       } catch (err) {
         console.log(err);

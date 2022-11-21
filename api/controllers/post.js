@@ -1,7 +1,7 @@
-import { db } from "../db.js";
-import jwt from "jsonwebtoken";
+const { db } = require("../db.js");
+const jwt = require("jsonwebtoken");
 
-export const getPosts = (req, res) => {
+exports.getPosts = (req, res) => {
   const q = req.query.cat
     ? "SELECT * FROM posts WHERE cat=?"
     : "SELECT * FROM posts";
@@ -13,7 +13,7 @@ export const getPosts = (req, res) => {
   });
 };
 
-export const getPost = (req, res) => {
+exports.getPost = (req, res) => {
   const q =
     "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
 
@@ -24,7 +24,7 @@ export const getPost = (req, res) => {
   });
 };
 
-export const addPost = (req, res) => {
+exports.addPost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -51,7 +51,7 @@ export const addPost = (req, res) => {
   });
 };
 
-export const deletePost = (req, res) => {
+exports.deletePost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -69,7 +69,7 @@ export const deletePost = (req, res) => {
   });
 };
 
-export const updatePost = (req, res) => {
+exports.updatePost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 

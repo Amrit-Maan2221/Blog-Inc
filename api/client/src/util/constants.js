@@ -1,3 +1,10 @@
+import axios from "axios";
+
+
+export const axoisInstance = axios.create({
+    baseURL: "http://localhost:3001/api/"
+})
+
 export const posts = [
     {
         id: 1,
@@ -24,5 +31,3 @@ export const posts = [
     },
 ];
 
-
-export const rootAPI_URL = "http://localhost:3001/api/"

@@ -1,9 +1,9 @@
-import { db } from "../db.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+const { db } = require("../db.js");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 
-export const register = (req, res) => {
+exports.register = (req, res) => {
     //CHECK EXISTING USER
     const q = "SELECT * FROM users WHERE email = ? OR username = ?";
     db.query(q, [req.body.email, req.body.username], (err, data) => {
@@ -24,7 +24,7 @@ export const register = (req, res) => {
     });
 };
 
-export const login = (req, res) => {
+exports.login = (req, res) => {
     //CHECK USER
     const q = "SELECT * FROM users WHERE username = ?";
 
@@ -49,7 +49,7 @@ export const login = (req, res) => {
 };
 
 
-export const logout = (req, res) => {
+exports.logout = (req, res) => {
     res.clearCookie("access_token",{
       sameSite:"none",
       secure:true
