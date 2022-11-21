@@ -1,4 +1,4 @@
-import axios from "axios";
+import {axoisInstance} from "../util/constants.js";
 import React, { useEffect, useState } from "react";
 
 const Menu = ({cat}) => {
